@@ -1,0 +1,256 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+header {
+    position: relative;
+    height: 500px; /* Aumentar la altura del header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('Logo.jpg') no-repeat center center/cover;
+    background-size: cover; /* Asegura que el logo cubra el header */
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Animación de aparición */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+nav {
+    position: relative; /* Cambiado a relative para evitar superposición */
+    z-index: 3; /* Asegurarse de que esté por encima de otros elementos */
+    margin-top: -150px; /* Ajusta este valor para bajar el menú */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+nav ul li {
+    opacity: 0; /* Oculto inicialmente */
+    animation: slideIn 0.6s forwards; /* Animación de entrada */
+    transition: all 0.3s ease; /* Transición para todos los cambios */
+}
+
+nav ul li:nth-child(1) { animation-delay: 0.2s; }
+nav ul li:nth-child(2) { animation-delay: 0.3s; }
+nav ul li:nth-child(3) { animation-delay: 0.4s; }
+nav ul li:nth-child(4) { animation-delay: 0.5s; }
+
+nav ul li a {
+    display: inline-flex; /* Cambiado a inline-flex para alinear icono y texto */
+    align-items: center; /* Alinear verticalmente el icono y el texto */
+    color: white;
+    font-size: 24px; /* Aumentar tamaño del texto */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px; /* Espaciado interno */
+    border: 2px solid transparent; /* Marco inicial transparente */
+    border-radius: 30px; /* Bordes más redondeados */
+    transition: color 0.3s ease, transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+nav ul li a:hover {
+    color: #f3f3f3;
+    transform: translateY(-8px) scale(1.1); /* Mueve hacia arriba y escala al pasar el mouse */
+    border: 2px solid #fbfcfd; /* Marco azul al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil al hacer hover */
+    animation: pulse 0.5s infinite alternate; /* Pulsar efecto */
+}
+
+nav ul li a .menu-icon {
+    width: 30px; /* Ajusta el tamaño del icono */
+    height: 30px; /* Ajusta el tamaño del icono */
+    border-radius: 50%; /* Hace que el icono sea redondo */
+    margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 100px; /* Aumenta este valor para bajar el título */
+    opacity: 0; /* Oculto inicialmente */
+    animation: fadeIn 1s forwards 0.6s; /* Animación de aparición */
+}
+
+h1 {
+    font-size: 72px; /* Aumentar el tamaño del título */
+    animation: titleAnimation 1s ease forwards 0.6s, bounce 1s infinite alternate; /* Animación de entrada con movimiento y rebote */
+}
+
+/* Estilos para los cuadros de información */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Aumentar espacio entre cuadros */
+    padding: 40px 20px;
+}
+
+.info-cuadro {
+    width: 90%; /* Aumentar el ancho */
+    max-width: 900px; /* Aumentar el ancho máximo */
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    text-align: center;
+    opacity: 0; /* Oculto inicialmente */
+    transform: translateY(50px); /* Desplazado hacia abajo inicialmente */
+    animation: fadeIn 1s forwards 0.8s, moveIn 0.7s ease forwards 0.8s; /* Animaciones de aparición y movimiento */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Añadir animación de transformación */
+}
+
+.info-cuadro:hover {
+    transform: translateY(-15px); /* Mueve hacia arriba al pasar el mouse */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.486); /* Aumentar sombra al hacer hover */
+    border: 2px solid #000000; /* Añadir borde azul al hacer hover */
+}
+
+.info-cuadro h2 {
+    font-size: 28px; /* Aumentar tamaño del texto */
+    margin-bottom: 10px;
+    animation: fadeIn 1s forwards 0.8s; /* Animación de entrada para el título */
+}
+
+.developer-cuadro {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    text-align: center;
+    opacity: 0; /* Oculto inicialmente */
+    transform: translateY(50px); /* Desplazado hacia abajo inicialmente */
+    animation: fadeIn 1s forwards 1.1s, moveIn 0.7s ease forwards 1.1s; /* Animaciones de aparición y movimiento */
+}
+
+.developer-cuadro:hover {
+    transform: translateY(-15px); /* Mueve hacia arriba al pasar el mouse */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.486); /* Aumentar sombra al hacer hover */
+    border: 2px solid #0c0c0c; /* Añadir borde azul al hacer hover */
+}
+
+.developer-image {
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: 100px; /* Ajusta el tamaño de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.developer-cuadro h3 {
+    font-size: 24px; /* Aumentar tamaño del texto */
+    margin-bottom: 10px;
+}
+
+.developer-cuadro p {
+    font-size: 16px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleAnimation {
+    0% { transform: translateY(-10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); } /* Efecto de rebote */
+}
+
+@keyframes moveIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); } /* Efecto de pulso */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        gap: 10px; /* Reducir el espacio entre los elementos del menú */
+    }
+
+    nav ul li a {
+        font-size: 20px; /* Reducir el tamaño de la fuente en móviles */
+        padding: 8px 15px; /* Reducir el padding */
+    }
+
+    header {
+        height: 300px; /* Reducir la altura del header en móviles */
+    }
+
+    h1 {
+        font-size: 48px; /* Reducir tamaño del título en móviles */
+    }
+
+    .info-cuadro,
+    .developer-cuadro {
+        width: 95%; /* Ajustar el ancho en móviles */
+        max-width: 90%; /* Reducir el ancho máximo en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 36px; /* Reducir aún más el tamaño del título en pantallas muy pequeñas */
+    }
+
+    nav ul li a {
+        font-size: 18px; /* Tamaño del texto del menú en pantallas muy pequeñas */
+    }
+
+    nav ul {
+        gap: 5px; /* Ajustar el espacio entre los elementos del menú */
+    }
+
+    .info-cuadro h2,
+    .developer-cuadro h3 {
+        font-size: 20px; /* Reducir tamaño de los encabezados en móviles */
+    }
+
+    .info-cuadro h2,
+    .developer-cuadro p {
+        font-size: 14px; /* Reducir tamaño del texto en móviles */
+    }
+}
